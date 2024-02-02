@@ -2,7 +2,7 @@ builders:
   todo_reporter:
     import: "package:extensions_builder/builder.dart"
     builder_factories: ["projectExtensionsBuilder"]
-    build_extensions: {".dart": [".project_extensions.g.part"]}
+    build_extensions: {".dart": [".projectExtensionsBuilder.g.part"]}
     auto_apply: dependents
     build_to: cache
     applies_builders: ["source_gen|combining_builder"]
