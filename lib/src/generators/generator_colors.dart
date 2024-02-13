@@ -129,7 +129,7 @@ class GeneratorColors extends GeneratorBase {
           ),
       ).accept(DartEmitter()).toString();
 
-  String _objectGenerator({required String className}) {
+  String _objectGenerator() {
     final namedArguments = <String, Expression>{};
 
     for (final field in _colorFields) {
@@ -139,7 +139,7 @@ class GeneratorColors extends GeneratorBase {
     final expr = InvokeExpression.newOf(
       TypeReference(
         (b) => b
-          ..symbol = className
+          ..symbol = _className
           ..url = 'package:flutter/material.dart',
       ),
       [],
@@ -148,7 +148,7 @@ class GeneratorColors extends GeneratorBase {
 
     return Field(
       (b) => b
-        ..name = className.replaceFirst(className[0], className[0].toLowerCase())
+        ..name = _className.replaceFirst(_className[0], _className[0].toLowerCase())
         ..modifier = FieldModifier.final$
         ..assignment = Code(expr.accept(DartEmitter()).toString()),
     ).accept(DartEmitter()).toString();
@@ -157,6 +157,6 @@ class GeneratorColors extends GeneratorBase {
   @override
   String code() => [
         _mixinGenerator(),
-        _objectGenerator(className: _className),
+        _objectGenerator(),
       ].join('\n\n');
 }
