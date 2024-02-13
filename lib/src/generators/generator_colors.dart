@@ -12,7 +12,7 @@ class GeneratorColors extends GeneratorBase {
   final _className = 'AppColorsTheme';
 
   Method get _copyWithMethod => Method(
-        (b) => b
+        (method) => method
           ..name = 'copyWith'
           ..returns = refer(_className)
           ..annotations.add(refer('override'))
@@ -32,7 +32,7 @@ class GeneratorColors extends GeneratorBase {
 
   InvokeExpression get _copyWithBody => InvokeExpression.newOf(
         TypeReference(
-          (b) => b
+          (typeRef) => typeRef
             ..symbol = _className
             ..url = 'package:flutter/material.dart',
         ),
@@ -48,19 +48,19 @@ class GeneratorColors extends GeneratorBase {
       );
 
   Method get _lerpMethod => Method(
-        (b) => b
+        (method) => method
           ..name = 'lerp'
           ..returns = refer('ThemeExtension<$_className>')
           ..annotations.add(refer('override'))
           ..requiredParameters.addAll([
             Parameter(
-              (b) => b
+              (param) => param
                 ..name = 'other'
                 ..covariant = true
                 ..type = refer('ThemeExtension<$_className>?'),
             ),
             Parameter(
-              (b) => b
+              (param) => param
                 ..name = 't'
                 ..type = refer('double'),
             ),
@@ -72,7 +72,7 @@ class GeneratorColors extends GeneratorBase {
 
   InvokeExpression _lerpBodyClass(FieldElement field) => InvokeExpression.newOf(
         TypeReference(
-          (b) => b
+          (typeRef) => typeRef
             ..symbol = 'Color.lerp'
             ..isNullable = false
             ..url = 'package:flutter/material.dart',
@@ -86,7 +86,7 @@ class GeneratorColors extends GeneratorBase {
 
   InvokeExpression get _lerpBody => InvokeExpression.newOf(
         TypeReference(
-          (b) => b
+          (typeRef) => typeRef
             ..symbol = _className
             ..types
             ..url = 'package:flutter/material.dart',
@@ -102,9 +102,9 @@ class GeneratorColors extends GeneratorBase {
         ),
       );
 
-  Constructor get _constructor => Constructor((b) => b
+  Constructor get _constructor => Constructor((constructor) => constructor
     ..optionalParameters.addAll(_colorFields.map(
-      (field) => Parameter((b) => b
+      (field) => Parameter((param) => param
         ..name = field.name
         ..named = true
         ..toThis = true
@@ -112,13 +112,13 @@ class GeneratorColors extends GeneratorBase {
     ),),);
 
   String _mixinGenerator() => Class(
-        (b) => b
+        (c) => c
           ..name = _className
           ..extend = refer('ThemeExtension<$_className>')
           ..constructors.add(_constructor)
           ..fields.addAll(
             _colorFields.map(
-              (field) => Field((b) => b
+              (field) => Field((field) => field
                 ..name = field.name
                 ..modifier = FieldModifier.final$
                 ..type = refer('Color'),),
@@ -138,7 +138,7 @@ class GeneratorColors extends GeneratorBase {
 
     final expr = InvokeExpression.newOf(
       TypeReference(
-        (b) => b
+        (typeRef) => typeRef
           ..symbol = _className
           ..url = 'package:flutter/material.dart',
       ),
@@ -147,7 +147,7 @@ class GeneratorColors extends GeneratorBase {
     );
 
     return Field(
-      (b) => b
+      (field) => field
         ..name = _className.replaceFirst(_className[0], _className[0].toLowerCase())
         ..modifier = FieldModifier.final$
         ..assignment = Code(expr.accept(DartEmitter()).toString()),

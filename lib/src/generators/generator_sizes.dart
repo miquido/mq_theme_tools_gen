@@ -10,7 +10,7 @@ class GeneratorSizes extends GeneratorBase {
   String _propertyGen(int step) => 'p$step';
 
   String _mixinGenerator() => Mixin(
-        (b) => b
+        (mixin) => mixin
           ..name = _mixinClass
           ..fields.addAll(
             _steps.map(
@@ -31,7 +31,7 @@ class GeneratorSizes extends GeneratorBase {
     final positionalArguments = <Expression>[];
 
     final paramExpr = TypeReference(
-      (b) => b
+      (typeRef) => typeRef
         ..symbol = '$_mixinClass.${_propertyGen(step)}'
         ..url = 'package:flutter/material.dart',
     );
@@ -44,7 +44,7 @@ class GeneratorSizes extends GeneratorBase {
 
     final expr = InvokeExpression.newOf(
       TypeReference(
-        (b) => b
+        (typeRef) => typeRef
           ..symbol = className
           ..url = 'package:flutter/material.dart',
       ),
@@ -53,7 +53,7 @@ class GeneratorSizes extends GeneratorBase {
     );
 
     return Field(
-      (b) => b
+      (field) => field
         ..name = '$fieldName$step'
         ..modifier = FieldModifier.constant
         ..assignment = Code(expr.accept(DartEmitter()).toString()),
