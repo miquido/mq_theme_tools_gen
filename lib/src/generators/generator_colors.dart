@@ -118,8 +118,8 @@ class GeneratorColors extends GeneratorBase {
           ..constructors.add(_constructor)
           ..fields.addAll(
             _colorFields.map(
-              (field) => Field((field) => field
-                ..name = field.name
+              (fieldElement) => Field((field) => field
+                ..name = fieldElement.name
                 ..modifier = FieldModifier.final$
                 ..type = refer('Color'),),
             ),

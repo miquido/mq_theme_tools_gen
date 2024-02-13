@@ -15,7 +15,7 @@ class GeneratorSizes extends GeneratorBase {
           ..fields.addAll(
             _steps.map(
               (step) => Field(
-                (b) => b
+                (field) => field
                   ..name = _propertyGen(step)
                   ..modifier = FieldModifier.constant
                   ..static = true
