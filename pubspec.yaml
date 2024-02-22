@@ -7,7 +7,6 @@ dependencies:
   analyzer: ">=5.0.0 <7.0.0"
   build: ^2.4.1
   build_config: ^1.1.1
-  dart_style: ^2.3.4
   source_gen: ^1.5.0
 
 dev_dependencies:
