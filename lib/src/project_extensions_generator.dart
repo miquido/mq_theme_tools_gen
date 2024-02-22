@@ -12,7 +12,7 @@ class ProjectExtensionsGenerator extends GeneratorForAnnotation<ProjectExtension
   FutureOr<String> generateForAnnotatedElement(Element element, ConstantReader annotation, BuildStep buildStep) {
     final className = element.name!;
     final mixinNameGen = '_${className}Mixin';
-    final steps = annotation.read('steps').listValue.map((e) => e.toIntValue()).whereType<int>().toList();
+    final steps = annotation.read('steps').setValue.map((e) => e.toIntValue()).whereType<int>().toSet();
 
     final colorFields =
         element.children.whereType<FieldElement>().where((element) => element.type.toString() == 'Color').toList();

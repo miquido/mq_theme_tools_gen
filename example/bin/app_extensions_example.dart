@@ -1,10 +1,10 @@
 import 'package:extensions_builder/project_extensions.dart';
 import 'package:flutter/material.dart';
 
-part 'example.g.dart';
+part 'app_extensions_example.g.dart';
 
-@ProjectExtensions(steps: [4, 8, 12, 16, 20, 24, 32, 48, 64, 80])
-class AppExtensions with _AppExtensionsMixin {
+@ProjectExtensions(steps: {4, 8, 12, 16, 20, 24, 32, 48, 64, 80})
+class AppExtensionsExample with _AppExtensionsExampleMixin {
   // primary900Color Swatch
   static const primary900 = Color(0xff480e11);
 
@@ -25,13 +25,13 @@ class AppExtensions with _AppExtensionsMixin {
 }
 
 void main() {
-  final t = AppExtensions();
+  final t = AppExtensionsExample();
 
   appColorsTheme.copyWith(
-    primary400: AppExtensions.primary400,
+    primary400: AppExtensionsExample.primary400,
   );
 
-  Column(
+  const Column(
     children: [
       Padding(padding: allPadding32),
       hGap32,

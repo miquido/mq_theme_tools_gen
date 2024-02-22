@@ -5,7 +5,7 @@ class GeneratorSizes extends GeneratorBase {
   GeneratorSizes(this._mixinClass, this._steps);
 
   final String _mixinClass;
-  final List<int> _steps;
+  final Set<int> _steps;
 
   String _propertyGen(int step) => 'p$step';
 
