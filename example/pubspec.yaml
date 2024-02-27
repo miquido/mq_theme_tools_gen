@@ -1,0 +1,17 @@
+name: mq_theme_tools_gen_example
+version: 0.0.1
+
+environment:
+  sdk: ">=3.2.2 <4.0.0"
+  flutter: ^3.16.2
+
+dependencies:
+  args: ^2.4.2
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  test: ^1.25.2
+  build_runner: ^2.4.8
+  extensions_builder:
+    path: ../
